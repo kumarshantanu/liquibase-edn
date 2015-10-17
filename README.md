@@ -27,4 +27,6 @@ _Targets Liquibase 3.0.8 for compatibility with [clj-liquibase](https://github.c
 
 Copyright © 2015 Shantanu Kumar
 
+_Note:_ The file `AbstractMapChangeLogParser.java` is adapted from the Liquibase source code.
+
 Distributed under the Apache License, version 2.0, the same as Liquibase.
