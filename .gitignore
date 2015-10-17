@@ -1,0 +1,12 @@
+/target
+/lib
+/classes
+/.settings
+*.jar
+*.class
+.classpath
+.project
+.idea
+.lein-repl-history
+/derby.log
+/pom.xml.asc
