@@ -1,0 +1,14 @@
+{:database-change-log [;{"preConditions" [{"runningAs" {"username" "liquibase"}}]}
+                       {:include {:file "child1.edn"}}
+                       {"changeSet" {"id" "2"
+                                     "author" "nvoxland"
+                                     "changes" [{"addColumn" {"tableName" "person"
+                                                              "columns" [{"column" {"name" "username"
+                                                                                    "type" "varchar(8)"}}]}}]}}
+                       {"changeSet" {"id" "3"
+                                     "author" "nvoxland"
+                                     "changes" [{"addLookupTable" {"existingTableName" "person"
+                                                                   "existingColumnName""state"
+                                                                   "newTableName" "state"
+                                                                   "newColumnName" "id"
+                                                                   "newColumnDataType" "char(2)"}}]}}]}
