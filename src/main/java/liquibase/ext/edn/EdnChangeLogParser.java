@@ -10,17 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 import us.bpsm.edn.Keyword;
+import us.bpsm.edn.Symbol;
 import us.bpsm.edn.parser.Parseable;
 import us.bpsm.edn.parser.Parser;
 import us.bpsm.edn.parser.Parsers;
 
 public class EdnChangeLogParser extends AbstractMapChangeLogParser {
-
-    public EdnChangeLogParser() throws ClassNotFoundException {
-        Class.forName("us.bpsm.edn.parser.Parseable");
-        Class.forName("us.bpsm.edn.parser.Parser");
-        Class.forName("us.bpsm.edn.parser.Parsers");
-    }
 
     @Override
     public String getSupportedFileExtension() {
@@ -60,15 +55,16 @@ public class EdnChangeLogParser extends AbstractMapChangeLogParser {
         } else if (v instanceof Map<?, ?>) {
             value = mapKeywordToCamelString((Map<?, ?>) v);
         } else if (v instanceof Keyword) {
-            value = keywordToCamelString((Keyword) v);
+            value = toCamelCaseString((Keyword) v);
+        } else if (v instanceof Symbol) {
+            value = toCamelCaseString((Symbol) v);
         } else {
             value = v;
         }
         return value;
     }
 
-    public static String keywordToCamelString(Keyword k) {
-        String name = k.getName();
+    public static String toCamelCase(String name) {
         StringBuilder sb = new StringBuilder(name.length());
         boolean upper = false;
         for (int i = 0; i < name.length(); i++) {
@@ -83,6 +79,14 @@ public class EdnChangeLogParser extends AbstractMapChangeLogParser {
         return sb.toString();
     }
 
+    public static String toCamelCaseString(Keyword k) {
+        return toCamelCase(k.getName());
+    }
+
+    public static String toCamelCaseString(Symbol s) {
+        return toCamelCase(s.getName());
+    }
+
     public static List<?> mapKeywordToCamelString(List<?> data) {
         List<Object> result = new ArrayList<Object>();
         for (Object each: data) {
@@ -95,12 +99,17 @@ public class EdnChangeLogParser extends AbstractMapChangeLogParser {
         Map<String, Object> result = new LinkedHashMap<String, Object>();
         for (Map.Entry<?, ?> pair: data.entrySet()) {
             Object k = pair.getKey();
-            Object v = pair.getValue();
-            if (!(k instanceof String || k instanceof Keyword)) {
+            Object value = normalizeValue(pair.getValue());
+            if (k instanceof Keyword) {
+                result.put(toCamelCaseString((Keyword) k), value);
+            } else if (k instanceof String) {
+                result.put((String) k, value);
+            } else if (k instanceof Symbol) {
+                result.put(toCamelCaseString((Symbol) k), value);
+            } else {
                 throw new IllegalArgumentException(
-                        "Expected map-key to be string or keyword, but found: " + String.valueOf(k));
+                        "Expected map-key to be keyword, string or symbol, but found: " + String.valueOf(k));
             }
-            result.put(k instanceof Keyword? keywordToCamelString((Keyword) k): (String) k, normalizeValue(v));
         }
         return result;
     }
