@@ -5,11 +5,11 @@
                                                                                        "type" "int"
                                                                                        "autoIncrement" true,
                                                                                        "constraints" {"primaryKey" true
-                                                                                                      "nullable" false}}}
+                                                                                                      nullable? false}}}
                                                                             {"column" {"name" "firstname"
                                                                                        "type" "varchar(50)"}}
                                                                             {"column" {"name" "lastname"
                                                                                        "type" "varchar(50)"
-                                                                                       "constraints" {"nullable" false}}}
+                                                                                       "constraints" {nullable false}}}
                                                                             {"column" {"name" "state"
                                                                                        "type" "char(2)"}}]}}]}}]}

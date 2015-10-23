@@ -65,11 +65,16 @@ public class EdnChangeLogParser extends AbstractMapChangeLogParser {
     }
 
     public static String toCamelCase(String name) {
-        StringBuilder sb = new StringBuilder(name.length());
+        int nameLength = name.length();
+        int nLastIndex = nameLength - 1;
+        StringBuilder sb = new StringBuilder(nameLength);
         boolean upper = false;
-        for (int i = 0; i < name.length(); i++) {
+        for (int i = 0; i < nameLength; i++) {
             char c = name.charAt(i);
-            if (c == '-') {
+            if (i == nLastIndex && c == '?') {  // ignore trailing `?` in boolean indicators
+                continue;
+            }
+            if (c == '-') {  // dash triggers upper-case
                 upper = true;
             } else {
                 sb.append(upper? Character.toUpperCase(c): c);
