@@ -6,14 +6,21 @@ Liquibase-EDN is [EDN](https://github.com/edn-format/edn) changelog parser for [
 
 ### Maven coordinates
 
-Currently not on any Maven repo. Install locally `mvn clean install` and put the following in your dependency management:
-
 ```xml
 <dependency>
   <groupId>liquibase-edn</groupId>
   <artifactId>liquibase-edn</artifactId>
-  <version>3.0.8-0.1.0-SNAPSHOT</version>
+  <version>3.0.8-0.1.0</version>
 </dependency>
+```
+
+For non-Clojure projects you may have to mention the [Clojars](https://clojars.org/) Maven repository in your POM file:
+
+```xml
+<repository>
+  <id>clojars.org</id>
+  <url>http://clojars.org/repo</url>
+</repository>
 ```
 
 _Targets Liquibase 3.0.8 for compatibility with [clj-liquibase](https://github.com/kumarshantanu/clj-liquibase)._
