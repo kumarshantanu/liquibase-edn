@@ -10,7 +10,7 @@ Liquibase-EDN is [EDN](https://github.com/edn-format/edn) changelog parser for [
 <dependency>
   <groupId>liquibase-edn</groupId>
   <artifactId>liquibase-edn</artifactId>
-  <version>3.0.8-0.1.0</version>
+  <version>3.0.8-0.1.1</version>
 </dependency>
 ```
 
