@@ -4,6 +4,10 @@ Liquibase-EDN is [EDN](https://github.com/edn-format/edn) changelog parser for [
 
 ## Usage
 
+The EDN parser follows the same structure as the YAML and JSON parsers with the following exceptions:
+- Hyphen in keywords and symbols only trigger upper-case conversion of the next character.
+- Trailing `?` in keywords and symbols are ignored.
+
 ### Maven coordinates
 
 ```xml
