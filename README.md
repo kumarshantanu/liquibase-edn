@@ -14,7 +14,7 @@ The EDN parser follows the same structure as the YAML and JSON parsers with the 
 <dependency>
   <groupId>liquibase-edn</groupId>
   <artifactId>liquibase-edn</artifactId>
-  <version>3.0.8-0.1.1</version>
+  <version>3.0.8-0.1.2</version>
 </dependency>
 ```
 

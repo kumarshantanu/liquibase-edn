@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>liquibase-edn</groupId>
   <artifactId>liquibase-edn</artifactId>
-  <version>3.0.8-0.1.2-SNAPSHOT</version>
+  <version>3.0.8-0.1.2</version>
   <name>Liquibase EDN parser</name>
   <description>EDN parser for Liquibase</description>
   <url>https://github.com/kumarshantanu/liquibase-edn</url>
