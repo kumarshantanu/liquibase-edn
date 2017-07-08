@@ -2,6 +2,7 @@ package liquibase.ext.edn.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import org.junit.Test;
 
@@ -25,13 +26,26 @@ public class EdnParserTest {
         }
     }
 
+    private static void closeConnection(Connection conn) {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            System.err.println("Error closing connection");
+            e.printStackTrace();
+        }
+    }
+
     @Test
     public void testEdnParser() throws LiquibaseException {
         ResourceAccessor resourceAccessor = new ClassLoaderResourceAccessor();
         Connection connection = getH2Connection();
-        DatabaseConnection databaseConnection = new JdbcConnection(connection);
-        Liquibase lb = new Liquibase(changeLogFile, resourceAccessor, databaseConnection);
-        lb.update("");
+        try {
+            DatabaseConnection databaseConnection = new JdbcConnection(connection);
+            Liquibase lb = new Liquibase(changeLogFile, resourceAccessor, databaseConnection);
+            lb.update("");
+        } finally {
+            closeConnection(connection);
+        }
     }
 
 }
