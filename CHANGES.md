@@ -4,7 +4,7 @@
 
 - Dependencies
   - [TODO] Liquibase-core `3.5.3`
-  - [TODO] Edn-java `0.5.0`
+  - Edn-java `0.5.0`
 
 
 ## 3.0.8-0.1.2 / 2015-October-25
