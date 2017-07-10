@@ -18,8 +18,8 @@ import us.bpsm.edn.parser.Parsers;
 public class EdnChangeLogParser extends AbstractMapChangeLogParser {
 
     @Override
-    public String getSupportedFileExtension() {
-        return "edn";
+    public String[] getSupportedFileExtensions() {
+        return new String[] {"edn"};
     }
 
     @Override

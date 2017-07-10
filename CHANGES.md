@@ -3,8 +3,12 @@
 ## [WIP] 3.5.3-0.2.0 / 2017-July-??
 
 - Dependencies
-  - [TODO] Liquibase-core `3.5.3`
+  - Liquibase-core `3.5.3`
   - Edn-java `0.5.0`
+- Parsers
+  - Updated Changelog parser
+  - [TODO] Added Snapshot parser
+  - Reference: https://liquibase.jira.com/browse/CORE-3083
 
 
 ## 3.0.8-0.1.2 / 2015-October-25
